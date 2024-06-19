@@ -1,0 +1,22 @@
+# baas_api.model.ModelsPutUpdateAccountStatusRequest
+
+## Load the model package
+```dart
+import 'package:baas_api/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**accounts** | [**BuiltList&lt;ModelsAccountIdentifiers&gt;**](ModelsAccountIdentifiers.md) |  | [optional] 
+**allowBuy** | **bool** |  | [optional] 
+**allowBuyRemarks** | **String** |  | [optional] 
+**allowSell** | **bool** |  | [optional] 
+**allowSellRemarks** | **String** |  | [optional] 
+**isBlocked** | **bool** |  | [optional] 
+**remarks** | **String** |  | [optional] 
+**status** | **int** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

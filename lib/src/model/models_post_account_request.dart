@@ -1,0 +1,830 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+
+// ignore_for_file: unused_element
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+
+part 'models_post_account_request.g.dart';
+
+/// ModelsPostAccountRequest
+///
+/// Properties:
+/// * [address] 
+/// * [barangay] 
+/// * [birthCity] 
+/// * [birthCountry] 
+/// * [birthDate] 
+/// * [city] 
+/// * [companyName] 
+/// * [contactNumber] 
+/// * [country] 
+/// * [documentId] 
+/// * [email] 
+/// * [employmentStatus] 
+/// * [firstName] 
+/// * [governmentIdInfo] 
+/// * [idBack] 
+/// * [idFront] 
+/// * [identification] - BaaS Account Details
+/// * [incomeSource] 
+/// * [investmentFinancialGoal] 
+/// * [investmentKnowledgeLevel] 
+/// * [investmentLiquidityNeeds] 
+/// * [investmentProjectedTrades] 
+/// * [investmentRiskAppetite] 
+/// * [isPep] 
+/// * [isUsCitizen] 
+/// * [lastName] 
+/// * [livenessVideo] 
+/// * [middleName] 
+/// * [nameSuffix] 
+/// * [nationality] 
+/// * [natureOfWork] 
+/// * [partnerId] - CaaS Account Details
+/// * [province] 
+/// * [region] 
+/// * [sex] 
+/// * [sourceOfIncome] 
+/// * [submittedId] 
+/// * [tin] 
+/// * [workAddress] 
+/// * [workContactNo] 
+/// * [zipCode] 
+@BuiltValue()
+abstract class ModelsPostAccountRequest implements Built<ModelsPostAccountRequest, ModelsPostAccountRequestBuilder> {
+  @BuiltValueField(wireName: r'address')
+  String? get address;
+
+  @BuiltValueField(wireName: r'barangay')
+  String? get barangay;
+
+  @BuiltValueField(wireName: r'birth_city')
+  String? get birthCity;
+
+  @BuiltValueField(wireName: r'birth_country')
+  String? get birthCountry;
+
+  @BuiltValueField(wireName: r'birth_date')
+  String? get birthDate;
+
+  @BuiltValueField(wireName: r'city')
+  String? get city;
+
+  @BuiltValueField(wireName: r'company_name')
+  String? get companyName;
+
+  @BuiltValueField(wireName: r'contact_number')
+  String? get contactNumber;
+
+  @BuiltValueField(wireName: r'country')
+  String? get country;
+
+  @BuiltValueField(wireName: r'document_id')
+  String? get documentId;
+
+  @BuiltValueField(wireName: r'email')
+  String? get email;
+
+  @BuiltValueField(wireName: r'employment_status')
+  String? get employmentStatus;
+
+  @BuiltValueField(wireName: r'first_name')
+  String? get firstName;
+
+  @BuiltValueField(wireName: r'government_id_info')
+  String? get governmentIdInfo;
+
+  @BuiltValueField(wireName: r'id_back')
+  String? get idBack;
+
+  @BuiltValueField(wireName: r'id_front')
+  String? get idFront;
+
+  /// BaaS Account Details
+  @BuiltValueField(wireName: r'identification')
+  String? get identification;
+
+  @BuiltValueField(wireName: r'income_source')
+  String? get incomeSource;
+
+  @BuiltValueField(wireName: r'investment_financial_goal')
+  String? get investmentFinancialGoal;
+
+  @BuiltValueField(wireName: r'investment_knowledge_level')
+  String? get investmentKnowledgeLevel;
+
+  @BuiltValueField(wireName: r'investment_liquidity_needs')
+  String? get investmentLiquidityNeeds;
+
+  @BuiltValueField(wireName: r'investment_projected_trades')
+  String? get investmentProjectedTrades;
+
+  @BuiltValueField(wireName: r'investment_risk_appetite')
+  String? get investmentRiskAppetite;
+
+  @BuiltValueField(wireName: r'is_pep')
+  bool? get isPep;
+
+  @BuiltValueField(wireName: r'is_us_citizen')
+  bool? get isUsCitizen;
+
+  @BuiltValueField(wireName: r'last_name')
+  String? get lastName;
+
+  @BuiltValueField(wireName: r'liveness_video')
+  String? get livenessVideo;
+
+  @BuiltValueField(wireName: r'middle_name')
+  String? get middleName;
+
+  @BuiltValueField(wireName: r'name_suffix')
+  String? get nameSuffix;
+
+  @BuiltValueField(wireName: r'nationality')
+  String? get nationality;
+
+  @BuiltValueField(wireName: r'nature_of_work')
+  String? get natureOfWork;
+
+  /// CaaS Account Details
+  @BuiltValueField(wireName: r'partner_id')
+  String? get partnerId;
+
+  @BuiltValueField(wireName: r'province')
+  String? get province;
+
+  @BuiltValueField(wireName: r'region')
+  String? get region;
+
+  @BuiltValueField(wireName: r'sex')
+  String? get sex;
+
+  @BuiltValueField(wireName: r'source_of_income')
+  String? get sourceOfIncome;
+
+  @BuiltValueField(wireName: r'submitted_id')
+  String? get submittedId;
+
+  @BuiltValueField(wireName: r'tin')
+  String? get tin;
+
+  @BuiltValueField(wireName: r'work_address')
+  String? get workAddress;
+
+  @BuiltValueField(wireName: r'work_contact_no')
+  String? get workContactNo;
+
+  @BuiltValueField(wireName: r'zip_code')
+  String? get zipCode;
+
+  ModelsPostAccountRequest._();
+
+  factory ModelsPostAccountRequest([void updates(ModelsPostAccountRequestBuilder b)]) = _$ModelsPostAccountRequest;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(ModelsPostAccountRequestBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<ModelsPostAccountRequest> get serializer => _$ModelsPostAccountRequestSerializer();
+}
+
+class _$ModelsPostAccountRequestSerializer implements PrimitiveSerializer<ModelsPostAccountRequest> {
+  @override
+  final Iterable<Type> types = const [ModelsPostAccountRequest, _$ModelsPostAccountRequest];
+
+  @override
+  final String wireName = r'ModelsPostAccountRequest';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    ModelsPostAccountRequest object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    if (object.address != null) {
+      yield r'address';
+      yield serializers.serialize(
+        object.address,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.barangay != null) {
+      yield r'barangay';
+      yield serializers.serialize(
+        object.barangay,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.birthCity != null) {
+      yield r'birth_city';
+      yield serializers.serialize(
+        object.birthCity,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.birthCountry != null) {
+      yield r'birth_country';
+      yield serializers.serialize(
+        object.birthCountry,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.birthDate != null) {
+      yield r'birth_date';
+      yield serializers.serialize(
+        object.birthDate,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.city != null) {
+      yield r'city';
+      yield serializers.serialize(
+        object.city,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.companyName != null) {
+      yield r'company_name';
+      yield serializers.serialize(
+        object.companyName,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.contactNumber != null) {
+      yield r'contact_number';
+      yield serializers.serialize(
+        object.contactNumber,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.country != null) {
+      yield r'country';
+      yield serializers.serialize(
+        object.country,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.documentId != null) {
+      yield r'document_id';
+      yield serializers.serialize(
+        object.documentId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.email != null) {
+      yield r'email';
+      yield serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.employmentStatus != null) {
+      yield r'employment_status';
+      yield serializers.serialize(
+        object.employmentStatus,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.firstName != null) {
+      yield r'first_name';
+      yield serializers.serialize(
+        object.firstName,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.governmentIdInfo != null) {
+      yield r'government_id_info';
+      yield serializers.serialize(
+        object.governmentIdInfo,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.idBack != null) {
+      yield r'id_back';
+      yield serializers.serialize(
+        object.idBack,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.idFront != null) {
+      yield r'id_front';
+      yield serializers.serialize(
+        object.idFront,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.identification != null) {
+      yield r'identification';
+      yield serializers.serialize(
+        object.identification,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.incomeSource != null) {
+      yield r'income_source';
+      yield serializers.serialize(
+        object.incomeSource,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.investmentFinancialGoal != null) {
+      yield r'investment_financial_goal';
+      yield serializers.serialize(
+        object.investmentFinancialGoal,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.investmentKnowledgeLevel != null) {
+      yield r'investment_knowledge_level';
+      yield serializers.serialize(
+        object.investmentKnowledgeLevel,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.investmentLiquidityNeeds != null) {
+      yield r'investment_liquidity_needs';
+      yield serializers.serialize(
+        object.investmentLiquidityNeeds,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.investmentProjectedTrades != null) {
+      yield r'investment_projected_trades';
+      yield serializers.serialize(
+        object.investmentProjectedTrades,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.investmentRiskAppetite != null) {
+      yield r'investment_risk_appetite';
+      yield serializers.serialize(
+        object.investmentRiskAppetite,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.isPep != null) {
+      yield r'is_pep';
+      yield serializers.serialize(
+        object.isPep,
+        specifiedType: const FullType(bool),
+      );
+    }
+    if (object.isUsCitizen != null) {
+      yield r'is_us_citizen';
+      yield serializers.serialize(
+        object.isUsCitizen,
+        specifiedType: const FullType(bool),
+      );
+    }
+    if (object.lastName != null) {
+      yield r'last_name';
+      yield serializers.serialize(
+        object.lastName,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.livenessVideo != null) {
+      yield r'liveness_video';
+      yield serializers.serialize(
+        object.livenessVideo,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.middleName != null) {
+      yield r'middle_name';
+      yield serializers.serialize(
+        object.middleName,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.nameSuffix != null) {
+      yield r'name_suffix';
+      yield serializers.serialize(
+        object.nameSuffix,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.nationality != null) {
+      yield r'nationality';
+      yield serializers.serialize(
+        object.nationality,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.natureOfWork != null) {
+      yield r'nature_of_work';
+      yield serializers.serialize(
+        object.natureOfWork,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.partnerId != null) {
+      yield r'partner_id';
+      yield serializers.serialize(
+        object.partnerId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.province != null) {
+      yield r'province';
+      yield serializers.serialize(
+        object.province,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.region != null) {
+      yield r'region';
+      yield serializers.serialize(
+        object.region,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.sex != null) {
+      yield r'sex';
+      yield serializers.serialize(
+        object.sex,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.sourceOfIncome != null) {
+      yield r'source_of_income';
+      yield serializers.serialize(
+        object.sourceOfIncome,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.submittedId != null) {
+      yield r'submitted_id';
+      yield serializers.serialize(
+        object.submittedId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.tin != null) {
+      yield r'tin';
+      yield serializers.serialize(
+        object.tin,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.workAddress != null) {
+      yield r'work_address';
+      yield serializers.serialize(
+        object.workAddress,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.workContactNo != null) {
+      yield r'work_contact_no';
+      yield serializers.serialize(
+        object.workContactNo,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.zipCode != null) {
+      yield r'zip_code';
+      yield serializers.serialize(
+        object.zipCode,
+        specifiedType: const FullType(String),
+      );
+    }
+  }
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    ModelsPostAccountRequest object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required ModelsPostAccountRequestBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'address':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.address = valueDes;
+          break;
+        case r'barangay':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.barangay = valueDes;
+          break;
+        case r'birth_city':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.birthCity = valueDes;
+          break;
+        case r'birth_country':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.birthCountry = valueDes;
+          break;
+        case r'birth_date':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.birthDate = valueDes;
+          break;
+        case r'city':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.city = valueDes;
+          break;
+        case r'company_name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.companyName = valueDes;
+          break;
+        case r'contact_number':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.contactNumber = valueDes;
+          break;
+        case r'country':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.country = valueDes;
+          break;
+        case r'document_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.documentId = valueDes;
+          break;
+        case r'email':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.email = valueDes;
+          break;
+        case r'employment_status':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.employmentStatus = valueDes;
+          break;
+        case r'first_name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.firstName = valueDes;
+          break;
+        case r'government_id_info':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.governmentIdInfo = valueDes;
+          break;
+        case r'id_back':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.idBack = valueDes;
+          break;
+        case r'id_front':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.idFront = valueDes;
+          break;
+        case r'identification':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.identification = valueDes;
+          break;
+        case r'income_source':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.incomeSource = valueDes;
+          break;
+        case r'investment_financial_goal':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.investmentFinancialGoal = valueDes;
+          break;
+        case r'investment_knowledge_level':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.investmentKnowledgeLevel = valueDes;
+          break;
+        case r'investment_liquidity_needs':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.investmentLiquidityNeeds = valueDes;
+          break;
+        case r'investment_projected_trades':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.investmentProjectedTrades = valueDes;
+          break;
+        case r'investment_risk_appetite':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.investmentRiskAppetite = valueDes;
+          break;
+        case r'is_pep':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.isPep = valueDes;
+          break;
+        case r'is_us_citizen':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.isUsCitizen = valueDes;
+          break;
+        case r'last_name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.lastName = valueDes;
+          break;
+        case r'liveness_video':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.livenessVideo = valueDes;
+          break;
+        case r'middle_name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.middleName = valueDes;
+          break;
+        case r'name_suffix':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.nameSuffix = valueDes;
+          break;
+        case r'nationality':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.nationality = valueDes;
+          break;
+        case r'nature_of_work':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.natureOfWork = valueDes;
+          break;
+        case r'partner_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.partnerId = valueDes;
+          break;
+        case r'province':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.province = valueDes;
+          break;
+        case r'region':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.region = valueDes;
+          break;
+        case r'sex':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.sex = valueDes;
+          break;
+        case r'source_of_income':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.sourceOfIncome = valueDes;
+          break;
+        case r'submitted_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.submittedId = valueDes;
+          break;
+        case r'tin':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.tin = valueDes;
+          break;
+        case r'work_address':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.workAddress = valueDes;
+          break;
+        case r'work_contact_no':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.workContactNo = valueDes;
+          break;
+        case r'zip_code':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.zipCode = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  ModelsPostAccountRequest deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = ModelsPostAccountRequestBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
+}
+

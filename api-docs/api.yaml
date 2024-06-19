@@ -1,0 +1,2888 @@
+basePath: /api/baas/v1
+definitions:
+  constants.StatusMap:
+    properties:
+      status:
+        type: integer
+      statusName:
+        type: string
+    type: object
+  models.Account:
+    properties:
+      baas_account_details:
+        $ref: '#/definitions/models.BaaSAccountDetails'
+      caas_account_details:
+        $ref: '#/definitions/models.CaaSAccount'
+      risk_profile:
+        $ref: '#/definitions/models.RiskProfile'
+    type: object
+  models.AccountIdentifiers:
+    properties:
+      clientId:
+        type: string
+      partnerId:
+        type: string
+    type: object
+  models.AccountStatus:
+    properties:
+      allowBuy:
+        type: boolean
+      allowBuyRemarks:
+        type: string
+      allowSell:
+        type: boolean
+      allowSellRemarks:
+        type: string
+      clientId:
+        type: string
+      createdAt:
+        type: string
+      isBlocked:
+        type: boolean
+      isCurrentRecord:
+        type: boolean
+      partnerId:
+        type: string
+      previousStatus:
+        type: integer
+      remarks:
+        type: string
+      status:
+        type: integer
+      updatedBy:
+        type: string
+    type: object
+  models.BaaSAccountDetails:
+    properties:
+      barangay:
+        type: string
+      client_id:
+        type: string
+      company_name:
+        type: string
+      created_at:
+        type: string
+      email:
+        type: string
+      employment_status:
+        type: string
+      identification:
+        type: string
+      investment_financial_goal:
+        type: string
+      investment_knowledge_level:
+        type: string
+      investment_liquidity_needs:
+        type: string
+      investment_projected_trades:
+        type: string
+      investment_risk_appetite:
+        type: string
+      is_blocked:
+        type: boolean
+      is_pep:
+        type: boolean
+      is_us_citizen:
+        type: boolean
+      nature_of_work:
+        type: string
+      nross_account_number:
+        type: string
+      nross_created_at:
+        type: string
+      partner_id:
+        type: string
+      province:
+        type: string
+      source_of_income:
+        type: string
+      status:
+        type: integer
+      tier:
+        type: integer
+      tin:
+        type: string
+      updated_at:
+        type: string
+      work_address:
+        type: string
+      work_contact_no:
+        type: string
+    type: object
+  models.BondPricesAndFees:
+    properties:
+      bond_id:
+        type: string
+      broker_fee:
+        type: number
+      buy_net_price:
+        type: number
+      buy_spread:
+        type: number
+      created_at:
+        type: string
+      id:
+        type: string
+      is_active:
+        type: boolean
+      mapping_fee:
+        type: number
+      sell_net_price:
+        type: number
+      sell_spread:
+        type: number
+      updated_by:
+        type: string
+    type: object
+  models.BondStatus:
+    properties:
+      bond_id:
+        description: references Bonds.Id
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      is_active:
+        type: boolean
+      is_enabled:
+        type: boolean
+      is_hidden:
+        type: boolean
+      status:
+        description: references BondStatusMap.Id
+        type: integer
+      updated_by:
+        type: string
+    type: object
+  models.Bonds:
+    properties:
+      awardDate:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      bondInformation:
+        example: The Retail Treasury Bonds (“RTBs”) form part of the National Government's
+          program to make government securities available to retail investors, especially
+          individuals.
+        type: string
+      bondLogo:
+        example: ""
+        type: string
+      bondLongName:
+        example: RETAIL TREASURY BONDS TRANCHE 30
+        type: string
+      bondName:
+        example: RTB 03-11
+        type: string
+      bondType:
+        example: TB
+        type: string
+      couponFrequency:
+        example: Annual
+        type: string
+      couponRate:
+        example: 1
+        type: number
+      createdAt:
+        type: string
+      endOffer:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      hasCoupon:
+        example: true
+        type: boolean
+      id:
+        type: string
+      incrementBuyAmount:
+        example: 1
+        type: number
+      incrementSellAmount:
+        example: 1
+        type: number
+      isin:
+        example: PIID0324C115
+        type: string
+      issueDate:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      issueType:
+        enum:
+          - Government
+          - Corporate
+        example: Government
+        type: string
+      issuer:
+        example: Government
+        type: string
+      marketType:
+        enum:
+          - Primary
+          - Secondary
+        example: Primary
+        type: string
+      maturityDate:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      minimumBuyAmount:
+        example: 1
+        type: number
+      minimumSellAmount:
+        example: 1
+        type: number
+      orderDecimalPlaces:
+        example: 1
+        type: integer
+      remark:
+        example: Updated issue date
+        type: string
+      startOffer:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      subType:
+        example: "2"
+        type: string
+      tradeCurrency:
+        example: PHP
+        type: string
+      type:
+        example: BOND
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  models.BondsPaginated:
+    properties:
+      bonds:
+        items:
+          $ref: '#/definitions/models.Bonds'
+        type: array
+      totalCount:
+        type: number
+      totalPage:
+        type: number
+    type: object
+  models.BondsPartnerTokenConfig:
+    properties:
+      bondId:
+        description: references Bonds.Id
+        example: f58725d9-47d0-437d-8a84-f3269cc48a81
+        type: string
+      buySpread:
+        example: 100
+        type: integer
+      createdAt:
+        type: string
+      fee:
+        example: 100
+        type: integer
+      id:
+        example: 5e626cd8-1d52-4ee2-ab2d-c5d0746ec6c6
+        type: string
+      isActive:
+        example: true
+        type: boolean
+      partnerId:
+        example: 0d1c2be9-34c8-43f4-ade0-d5c4d5ad4125
+        type: string
+      sellSpread:
+        example: 100
+        type: integer
+      updatedBy:
+        type: string
+    type: object
+  models.CaaSAccount:
+    properties:
+      clientId:
+        type: string
+      createdAt:
+        type: string
+      cryptoIn:
+        type: boolean
+      cryptoOut:
+        type: boolean
+      documents:
+        $ref: '#/definitions/models.CaaSAccountDocuments'
+      fiatIn:
+        type: boolean
+      fiatInRemarks:
+        type: string
+      fiatLimits:
+        $ref: '#/definitions/models.CaaSFiatLimits'
+      fiatOut:
+        type: boolean
+      fiatOutRemarks:
+        type: string
+      isActive:
+        type: boolean
+      partnerId:
+        type: string
+      tier:
+        type: string
+      trade:
+        type: boolean
+      updatedAt:
+        type: string
+      userInfo:
+        $ref: '#/definitions/models.CaaSAccountUserInfo'
+    type: object
+  models.CaaSAccountDocuments:
+    type: object
+  models.CaaSAccountPreSignedURLs:
+    properties:
+      idBack:
+        type: string
+      idFront:
+        type: string
+      livenessVideo:
+        type: string
+    type: object
+  models.CaaSAccountStatus:
+    properties:
+      fiatIn:
+        type: boolean
+      fiatInRemarks:
+        type: string
+      fiatOut:
+        type: boolean
+      fiatOutRemarks:
+        type: string
+    type: object
+  models.CaaSAccountUserInfo:
+    properties:
+      birthCity:
+        type: string
+      birthCountry:
+        type: string
+      birthDate:
+        format: 02-01-2006
+        type: string
+      contactNo:
+        type: string
+      emailAddress:
+        type: string
+      firstName:
+        type: string
+      governmentId:
+        type: string
+      governmentIdInfo:
+        type: string
+      incomeSource:
+        type: string
+      lastName:
+        type: string
+      location:
+        $ref: '#/definitions/models.CaaSAccountUserLocationInfo'
+      middleName:
+        type: string
+      nameSuffix:
+        type: string
+      nationality:
+        type: string
+      sex:
+        type: string
+      submittedId:
+        type: string
+    type: object
+  models.CaaSAccountUserLocationInfo:
+    properties:
+      Address:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      region:
+        type: string
+      zipCode:
+        type: string
+    type: object
+  models.CaaSFiatLimits:
+    properties:
+      dailyLimitAmount:
+        type: string
+      lastUpdated:
+        type: string
+      monthlyLimitAmount:
+        type: string
+      yearlyLimitAmount:
+        type: string
+    type: object
+  models.CreateBalanceCorrectionHttpRequest:
+    properties:
+      amount:
+        example: 100
+        type: number
+      assetId:
+        example: PHP
+        type: string
+      creditAccountEmail:
+        example: admin@pdax.ph
+        type: string
+      creditAccountPartnerId:
+        example: a71eb3da-b3f0-4df6-be31-7d715098df3e
+        type: string
+      debitAccountEmail:
+        example: testaccount@pdax.ph
+        type: string
+      debitAccountPartnerId:
+        example: a71eb3da-b3f0-4df6-be31-7d715098df3e
+        type: string
+      isHeld:
+        example: false
+        type: boolean
+      requestedBy:
+        example: admin@pdax.ph
+        type: string
+    type: object
+  models.CreateBalanceCorrectionResponse:
+    properties:
+      id:
+        type: string
+      message:
+        type: string
+    type: object
+  models.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  models.FeeSubledger:
+    properties:
+      createdAt:
+        type: string
+      creditAmount:
+        type: number
+      creditCurrency:
+        type: string
+      debitAmount:
+        type: number
+      debitCurrency:
+        type: string
+      deletedAt:
+        type: string
+      email:
+        type: string
+      feeType:
+        type: string
+      id:
+        type: string
+      ledgerId:
+        type: string
+      partnerId:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  models.GetAdminTransactionLedgerResponse:
+    properties:
+      ledgerItems:
+        items:
+          $ref: '#/definitions/models.Ledger'
+        type: array
+      limit:
+        type: integer
+      page:
+        type: integer
+      totalPages:
+        type: integer
+      totalRecords:
+        type: integer
+    type: object
+  models.GetBalanceCorrectionHttpResponse:
+    properties:
+      balanceCorrectionRequests:
+        items:
+          $ref: '#/definitions/models.GetBalanceCorrectionRequestFilteredAndPaginatedDBResponse'
+        type: array
+      totalCount:
+        example: 100000
+        type: integer
+      totalPages:
+        example: 1000
+        type: integer
+    type: object
+  models.GetBalanceCorrectionRequestFilteredAndPaginatedDBResponse:
+    properties:
+      amount:
+        example: 100
+        type: number
+      approvedAt:
+        example: "2020-10-10 10:10:10"
+        type: string
+      approvedBy:
+        example: admin@pdax.ph
+        type: string
+      assetId:
+        example: PHP
+        type: string
+      assetName:
+        example: PHP
+        type: string
+      assetType:
+        example: F
+        type: string
+      createdAt:
+        example: "2022-10-10 10:10:10"
+        type: string
+      creditAccountEmail:
+        example: admin@pdax.ph
+        type: string
+      creditAccountPartnerId:
+        example: 0ae8e8a6-d682-4305-9a79-fb66e0b8350b
+        type: string
+      debitAccountEmail:
+        example: testaccount@gmail.com
+        type: string
+      debitAccountPartnerId:
+        example: 0ae8e8a6-d682-4305-9a79-fb66e0b8350b
+        type: string
+      id:
+        example: 002fa7a4-9458-4f2b-a32b-1799b5f5148d
+        type: string
+      isHeld:
+        example: true
+        type: boolean
+      notes:
+        example: balance correction
+        type: string
+      requestedBy:
+        example: admin@pdax.ph
+        type: string
+      status:
+        example: approved
+        type: string
+    type: object
+  models.GetBondsPartnerTokenConfigResponse:
+    properties:
+      config:
+        $ref: '#/definitions/models.BondsPartnerTokenConfig'
+    type: object
+  models.GetBondsPartnersResponse:
+    properties:
+      partner_configs:
+        items:
+          $ref: '#/definitions/models.BondsPartnerTokenConfig'
+        type: array
+    type: object
+  models.GetCurrentUserAccountStatusResponse:
+    properties:
+      caasStatus:
+        $ref: '#/definitions/models.CaaSAccountStatus'
+      status:
+        $ref: '#/definitions/models.AccountStatus'
+    type: object
+  models.GetFeeSubledgerPaginatedResponse:
+    properties:
+      feeSubledgers:
+        items:
+          $ref: '#/definitions/models.FeeSubledger'
+        type: array
+      page:
+        type: integer
+      pageSize:
+        type: integer
+      totalCount:
+        type: integer
+      totalPage:
+        type: integer
+    type: object
+  models.GetLedgerReportsResponse:
+    properties:
+      totalBondsVolume:
+        type: number
+      totalSettlementVolume:
+        type: number
+      totalTransactionCount:
+        type: integer
+    type: object
+  models.GetLedgerViewResponse:
+    properties:
+      ledgers:
+        items:
+          $ref: '#/definitions/models.LedgerView'
+        type: array
+      page:
+        type: integer
+      pageSize:
+        type: integer
+      totalCount:
+        type: integer
+      totalPage:
+        type: integer
+    type: object
+  models.GetNRoSSAccountCreationFilesResponse:
+    properties:
+      objects:
+        items:
+          type: string
+        type: array
+    type: object
+  models.GetPresignedNRoSSAccountCreationFileURLRequest:
+    properties:
+      file:
+        type: string
+    type: object
+  models.GetPresignedNRoSSAccountCreationFileURLResponse:
+    properties:
+      expiry:
+        type: integer
+      url:
+        type: string
+    type: object
+  models.GetStartNRoSSCreationResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  models.GetStatusMappingResponse:
+    properties:
+      statuses:
+        items:
+          $ref: '#/definitions/constants.StatusMap'
+        type: array
+    type: object
+  models.GetTransactionSubledgerPaginatedResponse:
+    properties:
+      page:
+        type: integer
+      pageSize:
+        type: integer
+      totalCount:
+        type: integer
+      totalPage:
+        type: integer
+      transactionSubledger:
+        items:
+          $ref: '#/definitions/models.TransactionSubledger'
+        type: array
+    type: object
+  models.GetUserBalanceResponse:
+    properties:
+      amount:
+        example: 123.45
+        type: number
+      asset_id:
+        example: PHP
+        type: string
+      asset_name:
+        example: PHP
+        type: string
+      asset_type:
+        example: B
+        type: string
+      created_at:
+        example: "2006-01-02T15:04:05.999Z"
+        type: string
+      email:
+        example: test@pdax.ph
+        type: string
+      id:
+        example: 57893c86-3151-4ecb-9c85-1fc4a4768b01
+        type: string
+      is_held:
+        example: false
+        type: boolean
+      partner_id:
+        example: dd8067a9-ec77-4de1-8c45-6878ede61363
+        type: string
+      previous_balance:
+        type: string
+    type: object
+  models.GetUserBalancesHttpResponse:
+    properties:
+      balances:
+        items:
+          $ref: '#/definitions/models.GetUserBalanceResponse'
+        type: array
+    type: object
+  models.InsertOrUpdateBalanceCorrectionStatusRequest:
+    properties:
+      approvedAt:
+        type: string
+      approvedBy:
+        type: string
+      balanceCorrectionRequestId:
+        type: string
+      notes:
+        type: string
+      previousStatusId:
+        type: string
+      statusId:
+        type: string
+    type: object
+  models.InsertOrUpdateBondPricesAndFeesHttpRequest:
+    properties:
+      brokerFee:
+        example: 100
+        type: number
+      buyNetPrice:
+        example: 100
+        type: number
+      buySpread:
+        example: 100
+        type: number
+      mappingFee:
+        example: 100
+        type: number
+      sellNetPrice:
+        example: 100
+        type: number
+      sellSpread:
+        example: 100
+        type: number
+    type: object
+  models.InsertOrUpdateBondPricesAndFeesResponse:
+    properties:
+      bondId:
+        example: 5e626cd8-1d52-4ee2-ab2d-c5d0746ec6c6
+        type: string
+      message:
+        example: successfully inserted/updated bond prices and fees
+        type: string
+      updatedBy:
+        example: admin@pdax.ph
+        type: string
+    type: object
+  models.Ledger:
+    properties:
+      bondId:
+        type: string
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      marketType:
+        type: string
+      partnerId:
+        type: string
+      price:
+        type: number
+      quantity:
+        type: number
+      settlementCurrency:
+        type: string
+      settlementFeesAmount:
+        type: number
+      settlementNetAmount:
+        type: number
+      side:
+        type: string
+      status:
+        type: string
+      subType:
+        type: string
+      tradeCurrency:
+        type: string
+      tradePair:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  models.LedgerView:
+    properties:
+      bondName:
+        type: string
+      brokerFee:
+        type: number
+      clientId:
+        type: string
+      createdAt:
+        type: string
+      email:
+        type: string
+      faceValue:
+        type: number
+      id:
+        type: string
+      immTransactionId:
+        type: string
+      nrossAccountNumber:
+        type: string
+      partnerFee:
+        type: number
+      partnerId:
+        type: string
+      price:
+        type: number
+      runningBalance:
+        type: number
+      settlementCurrency:
+        type: string
+      settlementNetAmount:
+        type: number
+      status:
+        type: string
+      tradePair:
+        type: string
+      tradedCurrency:
+        type: string
+      transactionType:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  models.PostAccountRequest:
+    properties:
+      address:
+        type: string
+      barangay:
+        type: string
+      birth_city:
+        type: string
+      birth_country:
+        type: string
+      birth_date:
+        type: string
+      city:
+        type: string
+      company_name:
+        type: string
+      contact_number:
+        type: string
+      country:
+        type: string
+      document_id:
+        type: string
+      email:
+        type: string
+      employment_status:
+        type: string
+      first_name:
+        type: string
+      government_id_info:
+        type: string
+      id_back:
+        type: string
+      id_front:
+        type: string
+      identification:
+        description: BaaS Account Details
+        type: string
+      income_source:
+        type: string
+      investment_financial_goal:
+        type: string
+      investment_knowledge_level:
+        type: string
+      investment_liquidity_needs:
+        type: string
+      investment_projected_trades:
+        type: string
+      investment_risk_appetite:
+        type: string
+      is_pep:
+        type: boolean
+      is_us_citizen:
+        type: boolean
+      last_name:
+        type: string
+      liveness_video:
+        type: string
+      middle_name:
+        type: string
+      name_suffix:
+        type: string
+      nationality:
+        type: string
+      nature_of_work:
+        type: string
+      partner_id:
+        description: CaaS Account Details
+        type: string
+      province:
+        type: string
+      region:
+        type: string
+      sex:
+        type: string
+      source_of_income:
+        type: string
+      submitted_id:
+        type: string
+      tin:
+        type: string
+      work_address:
+        type: string
+      work_contact_no:
+        type: string
+      zip_code:
+        type: string
+    type: object
+  models.PostAccountResponse:
+    properties:
+      clientId:
+        type: string
+      message:
+        type: string
+      preSignedUrls:
+        $ref: '#/definitions/models.CaaSAccountPreSignedURLs'
+    type: object
+  models.PostBondCreationRequest:
+    properties:
+      bonds:
+        $ref: '#/definitions/models.PostBondsConfigRequest'
+      partners:
+        example:
+          - '[79f70abb-d9e4-4e60-a57e-5ac30e25c80a'
+          - ' 30170a50-79ed-4167-8639-86e04ad72794]'
+        items:
+          type: string
+        type: array
+    type: object
+  models.PostBondsConfigRequest:
+    properties:
+      awardDate:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      bondInformation:
+        example: The Retail Treasury Bonds (“RTBs”) form part of the National Government's
+          program to make government securities available to retail investors, especially
+          individuals.
+        type: string
+      bondLogo:
+        example: ""
+        type: string
+      bondLongName:
+        example: RETAIL TREASURY BONDS TRANCHE 30
+        type: string
+      bondName:
+        example: RTB 03-11
+        type: string
+      bondType:
+        example: TB
+        type: string
+      couponFrequency:
+        example: Annual
+        type: string
+      couponRate:
+        example: 1
+        type: number
+      endOffer:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      hasCoupon:
+        example: true
+        type: boolean
+      incrementBuyAmount:
+        example: 1
+        type: number
+      incrementSellAmount:
+        example: 1
+        type: number
+      isin:
+        example: PIID0324C115
+        type: string
+      issueDate:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      issueType:
+        enum:
+          - Government
+          - Corporate
+        example: Government
+        type: string
+      issuer:
+        example: Government
+        type: string
+      maturityDate:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      minimumBuyAmount:
+        example: 1
+        type: number
+      minimumSellAmount:
+        example: 1
+        type: number
+      orderDecimalPlaces:
+        example: 1
+        type: integer
+      startOffer:
+        example: "2006-01-02T15:04:05+07:00"
+        type: string
+      tradeCurrency:
+        example: PHP
+        type: string
+      type:
+        example: BOND
+        type: string
+    type: object
+  models.PostBondsConfigResponse:
+    properties:
+      bondId:
+        type: string
+      message:
+        type: string
+      updatedBy:
+        type: string
+    type: object
+  models.PostExistingAccountRequest:
+    properties:
+      barangay:
+        type: string
+      client_id:
+        type: string
+      company_name:
+        type: string
+      employment_status:
+        type: string
+      identification:
+        type: string
+      investment_financial_goal:
+        type: string
+      investment_knowledge_level:
+        type: string
+      investment_liquidity_needs:
+        type: string
+      investment_projected_trades:
+        type: string
+      investment_risk_appetite:
+        type: string
+      is_pep:
+        type: boolean
+      is_us_citizen:
+        type: boolean
+      nature_of_work:
+        type: string
+      partner_id:
+        type: string
+      province:
+        type: string
+      sex:
+        type: string
+      source_of_income:
+        type: string
+      tin:
+        type: string
+      work_address:
+        type: string
+      work_contact_no:
+        type: string
+      zipCode:
+        type: string
+    type: object
+  models.PostExistingAccountResponse:
+    properties:
+      client_id:
+        type: string
+      message:
+        type: string
+      partner_id:
+        type: string
+    type: object
+  models.PostLegalAgreementsRequest:
+    properties:
+      fixed_income_security_rules:
+        type: boolean
+      identification:
+        type: string
+      investors_undertaking:
+        type: boolean
+      partner_id:
+        type: string
+      privacy_policy:
+        type: boolean
+      terms_and_conditions:
+        type: boolean
+    type: object
+  models.PostLegalAgreementsResponse:
+    properties:
+      identification:
+        type: string
+      message:
+        type: string
+      partner_id:
+        type: string
+    type: object
+  models.PostUploadNRoSSActivationResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  models.PutApproveAccountWithNRoSSNumberRequest:
+    properties:
+      accounts:
+        items:
+          $ref: '#/definitions/models.AccountIdentifiers'
+        type: array
+      updatedBy:
+        type: string
+    type: object
+  models.PutApproveAccountWithNRoSSNumberResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  models.PutRejectAccountWithNRoSSNumberRequest:
+    properties:
+      accounts:
+        items:
+          $ref: '#/definitions/models.AccountIdentifiers'
+        type: array
+      remarks:
+        type: string
+      updatedBy:
+        type: string
+    type: object
+  models.PutRejectAccountWithNRoSSNumberResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  models.PutUpdateAccountStatusRequest:
+    properties:
+      accounts:
+        items:
+          $ref: '#/definitions/models.AccountIdentifiers'
+        type: array
+      allowBuy:
+        type: boolean
+      allowBuyRemarks:
+        type: string
+      allowSell:
+        type: boolean
+      allowSellRemarks:
+        type: string
+      isBlocked:
+        type: boolean
+      remarks:
+        type: string
+      status:
+        enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+        type: integer
+    type: object
+  models.RiskProfile:
+    properties:
+      isBlacklisted:
+        type: boolean
+      riskLevel:
+        type: string
+      riskScore:
+        type: number
+    type: object
+  models.ServiceSettings:
+    properties:
+      is_bonds_in_enabled:
+        type: boolean
+      is_bonds_out_enabled:
+        type: boolean
+      is_buy_enabled:
+        type: boolean
+      is_fiat_in_enabled:
+        type: boolean
+      is_fiat_out_enabled:
+        type: boolean
+      is_sell_enabled:
+        type: boolean
+    type: object
+  models.TransactionSubledger:
+    properties:
+      createdAt:
+        type: string
+      creditAmount:
+        type: number
+      creditCurrency:
+        type: string
+      debitAmount:
+        type: number
+      debitCurrency:
+        type: string
+      deletedAt:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      immTransactionId:
+        type: string
+      ledgerId:
+        type: string
+      partnerId:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  models.UpdateBalanceCorrectionRequestStatusHttpResponse:
+    properties:
+      message:
+        example: successfully updated balance correction request status
+        type: string
+    type: object
+  models.UpdateBondStatusResponse:
+    properties:
+      bondId:
+        example: 5e626cd8-1d52-4ee2-ab2d-c5d0746ec6c6
+        type: string
+      message:
+        example: successfully updated bond settings
+        type: string
+      updatedBy:
+        example: admin@pdax.ph
+        type: string
+    type: object
+  models.UpdateBondsPartnerTokenConfigHttpRequest:
+    properties:
+      buySpread:
+        example: 100
+        type: integer
+      fee:
+        example: 100
+        type: integer
+      sellSpread:
+        example: 100
+        type: integer
+    type: object
+  models.UpdateBondsPartnerTokenConfigResponse:
+    properties:
+      bondId:
+        example: 5233b486-9bb8-4670-ae41-88eb7c34f228
+        type: string
+      message:
+        example: successfully updated bond token config
+        type: string
+      updatedBy:
+        example: admin@pdax.ph
+        type: string
+    type: object
+  models.UpdateMultipleAccountStatusResponse:
+    properties:
+      accounts:
+        items:
+          $ref: '#/definitions/models.AccountIdentifiers'
+        type: array
+      allowBuy:
+        type: boolean
+      allowBuyRemarks:
+        type: string
+      allowSell:
+        type: boolean
+      allowSellRemarks:
+        type: string
+      isBlocked:
+        type: boolean
+      message:
+        type: string
+      status:
+        type: integer
+      updatedBy:
+        type: string
+    type: object
+  models.UpdateServiceSettingsResponse:
+    properties:
+      message:
+        type: string
+      request:
+        $ref: '#/definitions/models.UpdateSettingsRequest'
+    type: object
+  models.UpdateSettingsRequest:
+    properties:
+      isBondsInEnabled:
+        type: boolean
+      isBondsOutEnabled:
+        type: boolean
+      isBuyEnabled:
+        type: boolean
+      isFiatInEnabled:
+        type: boolean
+      isFiatOutEnabled:
+        type: boolean
+      isSellEnabled:
+        type: boolean
+    type: object
+  models.UpdateUserBalanceHttpRequest:
+    properties:
+      amount:
+        example: 100
+        type: number
+      assetId:
+        example: 57893c86-3151-4ecb-9c85-1fc4a4768b01
+        type: string
+      isHeld:
+        example: false
+        type: boolean
+    type: object
+  models.UpdateUserBalanceHttpResponse:
+    properties:
+      message:
+        example: successfully inserted user account balance
+        type: string
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: PDAX BaaS Team
+    url: http://www.swagger.io/support
+  description: This is the API that serves the account service for baas.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: BaaS Account Service API
+  version: "1.0"
+paths:
+  /accounts/register:
+    get:
+      consumes:
+        - application/json
+      description: post account
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: registers an account
+      tags:
+        - accounts
+  /admin/accounts:
+    get:
+      description: GET Accounts with Page and Page Size with filters for Nross Account
+        No, Email, and Status
+      parameters:
+        - in: query
+          minimum: 1
+          name: Page
+          type: integer
+        - in: query
+          name: email
+          type: string
+        - in: query
+          name: kycCreatedFrom
+          type: string
+        - in: query
+          name: kycCreatedTo
+          type: string
+        - in: query
+          name: nrossAccountNumber
+          type: string
+        - in: query
+          name: nrossCreatedFrom
+          type: string
+        - in: query
+          name: nrossCreatedTo
+          type: string
+        - in: query
+          minimum: 1
+          name: pageSize
+          type: number
+        - in: query
+          name: status
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: retrieves accounts with filters and paginated
+      tags:
+        - admin
+  /admin/accounts/approve:
+    put:
+      consumes:
+        - application/json
+      parameters:
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.PutApproveAccountWithNRoSSNumberRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PutApproveAccountWithNRoSSNumberResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: approve account with nross number
+      tags:
+        - admin
+  /admin/accounts/partner/{partnerID}/client/{clientID}:
+    get:
+      consumes:
+        - application/json
+      parameters:
+        - description: clientID
+          in: path
+          name: clientID
+          required: true
+          type: string
+        - description: partnerID
+          in: path
+          name: partnerID
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BaaSAccountDetails'
+      summary: get user baas account data
+      tags:
+        - admin
+  /admin/accounts/reject:
+    put:
+      consumes:
+        - application/json
+      parameters:
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.PutRejectAccountWithNRoSSNumberRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PutRejectAccountWithNRoSSNumberResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: reject account with nross number
+      tags:
+        - admin
+  /admin/accounts/status:
+    put:
+      consumes:
+        - application/json
+      parameters:
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.PutUpdateAccountStatusRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UpdateMultipleAccountStatusResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: update account status
+      tags:
+        - admin
+  /admin/accounts/status/map:
+    get:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetStatusMappingResponse'
+      summary: get account status mapping
+      tags:
+        - admin
+  /admin/accounts/status/partner/{partnerID}/client/{clientID}:
+    get:
+      consumes:
+        - application/json
+      parameters:
+        - description: clientID
+          in: path
+          name: clientID
+          required: true
+          type: string
+        - description: partnerID
+          in: path
+          name: partnerID
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetCurrentUserAccountStatusResponse'
+      summary: get user account status
+      tags:
+        - admin
+  /admin/balances/correction:
+    get:
+      consumes:
+        - application/json
+      parameters:
+        - in: query
+          name: approvedAtFrom
+          type: string
+        - in: query
+          name: approvedAtTo
+          type: string
+        - in: query
+          name: approvedBy
+          type: string
+        - in: query
+          name: assetId
+          type: string
+        - in: query
+          name: assetName
+          type: string
+        - in: query
+          name: assetType
+          type: string
+        - in: query
+          name: creditAccountEmail
+          type: string
+        - in: query
+          name: creditAccountPartnerId
+          type: string
+        - in: query
+          name: debitAccountPartnerEmail
+          type: string
+        - in: query
+          name: debitAccountPartnerId
+          type: string
+        - in: query
+          name: limit
+          type: integer
+        - in: query
+          name: page
+          type: integer
+        - in: query
+          name: requestedAtFrom
+          type: string
+        - in: query
+          name: requestedAtTo
+          type: string
+        - in: query
+          name: requestedBy
+          type: string
+        - in: query
+          name: status
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetBalanceCorrectionHttpResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get balance correction with filters
+      tags:
+        - balance correction
+    post:
+      consumes:
+        - application/json
+      parameters:
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.CreateBalanceCorrectionHttpRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CreateBalanceCorrectionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Create balance correction request
+      tags:
+        - balance correction
+  /admin/balances/correction/{balanceCorrectionId}/status:
+    put:
+      consumes:
+        - application/json
+      parameters:
+        - description: Balance Correction Id
+          in: path
+          name: balanceCorrectionId
+          required: true
+          type: string
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.InsertOrUpdateBalanceCorrectionStatusRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UpdateBalanceCorrectionRequestStatusHttpResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Update Balance correction
+      tags:
+        - balance correction
+  /admin/bonds:
+    get:
+      description: GET Bonds with Limit and Page
+      parameters:
+        - in: query
+          minimum: 1
+          name: page
+          type: integer
+        - in: query
+          minimum: 1
+          name: pageSize
+          type: integer
+        - in: query
+          name: partnerId
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BondsPaginated'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Retrieves Bonds with Pagination
+      tags:
+        - bonds
+    post:
+      consumes:
+        - application/json
+      description: POST bond
+      parameters:
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.PostBondCreationRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PostBondsConfigResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Creates Bonds Config
+      tags:
+        - bonds
+  /admin/bonds/{bondId}:
+    get:
+      description: GET Bonds by UUID
+      parameters:
+        - description: Bonds ID
+          in: path
+          name: bondId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Bonds'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Retrieves Bonds by UUID
+      tags:
+        - bonds
+    put:
+      consumes:
+        - application/json
+      description: PUT bond
+      parameters:
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.Bonds'
+        - description: Bonds bondId
+          in: path
+          name: bondId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Bonds'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Updates Bonds Config
+      tags:
+        - bonds
+  /admin/bonds/{bondId}/fees:
+    get:
+      description: GET bond prices and fees
+      parameters:
+        - description: bond Id
+          in: path
+          name: bondId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BondPricesAndFees'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get bonds' prices and fees
+      tags:
+        - bonds
+    put:
+      description: PUT bond prices and fees
+      parameters:
+        - description: bond Id
+          in: path
+          name: bondId
+          required: true
+          type: string
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.InsertOrUpdateBondPricesAndFeesHttpRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InsertOrUpdateBondPricesAndFeesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Update bonds' prices and fees
+      tags:
+        - bonds
+  /admin/bonds/{bondId}/partners:
+    get:
+      description: GET bond partners
+      parameters:
+        - description: bond Id
+          in: path
+          name: bondId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetBondsPartnersResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get bonds' partners
+      tags:
+        - bonds
+  /admin/bonds/{bondId}/partners/{partnerId}:
+    get:
+      description: GET bond config
+      parameters:
+        - description: Bonds Id
+          in: path
+          name: bondId
+          required: true
+          type: string
+        - description: Partner Id
+          in: path
+          name: partnerId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetBondsPartnerTokenConfigResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get Bonds Partner Config
+      tags:
+        - bonds
+    put:
+      consumes:
+        - application/json
+      description: PUT bond config
+      parameters:
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.UpdateBondsPartnerTokenConfigHttpRequest'
+        - description: Bonds Id
+          in: path
+          name: bondId
+          required: true
+          type: string
+        - description: Partner Id
+          in: path
+          name: partnerId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UpdateBondsPartnerTokenConfigResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Updates Bonds Partner Config
+      tags:
+        - bonds
+  /admin/bonds/{bondId}/status:
+    get:
+      description: GET bond status
+      parameters:
+        - description: Bonds Id
+          in: path
+          name: bondId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BondStatus'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get bond status
+      tags:
+        - bonds
+    put:
+      description: PUT bond setting
+      parameters:
+        - description: Bonds Id
+          in: path
+          name: bondId
+          required: true
+          type: string
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.UpdateBondsPartnerTokenConfigHttpRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UpdateBondStatusResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Update bond settings
+      tags:
+        - bonds
+  /admin/bonds/partners/{partnerId}:
+    get:
+      description: GET partner bonds
+      parameters:
+        - description: partner Id
+          in: path
+          name: partnerId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetBondsPartnersResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get partner's bonds
+      tags:
+        - bonds
+  /admin/ledger:
+    get:
+      consumes:
+        - application/json
+      description: GET ledger
+      parameters:
+        - description: starting transaction date
+          format: date
+          in: query
+          name: transactionDateFrom
+          type: string
+        - description: ending transaction date
+          format: date
+          in: query
+          name: transactionDateTo
+          type: string
+        - description: account email
+          format: email
+          in: query
+          name: userAccount
+          type: string
+        - description: transaction trade pair
+          in: query
+          name: tradePair
+          type: string
+        - description: currency being bought/sold (traded)
+          in: query
+          name: tradedCurrency
+          type: string
+        - description: currency used to trade traded currency
+          in: query
+          name: settlementCurrency
+          type: string
+        - description: quantity of tradedCurrency being traded
+          in: query
+          name: faceValue
+          type: string
+        - description: bond market type
+          enum:
+            - Primary
+            - Secondary
+          in: query
+          name: marketType
+          type: string
+        - description: bond subtype
+          enum:
+            - AWARDED
+            - CANCELLED
+            - ISSUED
+            - MATURED
+            - PRESALE
+          in: query
+          name: subType
+          type: string
+        - description: status of the transaction being queried
+          in: query
+          name: transactionStatus
+          type: string
+        - description: partnerId filter
+          format: uuid
+          in: query
+          name: partnerId
+          type: string
+        - description: side filter
+          enum:
+            - buy
+            - sell
+          in: query
+          name: side
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetAdminTransactionLedgerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Obtains ledger entries
+      tags:
+        - ledger
+  /admin/ledger/download:
+    get:
+      consumes:
+        - application/json
+      description: GET ledger
+      parameters:
+        - description: starting transaction date
+          format: date
+          in: query
+          name: transactionDateFrom
+          type: string
+        - description: ending transaction date
+          format: date
+          in: query
+          name: transactionDateTo
+          type: string
+        - description: account email
+          format: email
+          in: query
+          name: userAccount
+          type: string
+        - description: transaction trade pair
+          in: query
+          name: tradePair
+          type: string
+        - description: currency being bought/sold (traded)
+          in: query
+          name: tradedCurrency
+          type: string
+        - description: currency used to trade traded currency
+          in: query
+          name: settlementCurrency
+          type: string
+        - description: quantity of tradedCurrency being traded
+          in: query
+          name: faceValue
+          type: string
+        - description: bond market type
+          enum:
+            - Primary
+            - Secondary
+          in: query
+          name: marketType
+          type: string
+        - description: bond subtype
+          enum:
+            - AWARDED
+            - CANCELLED
+            - ISSUED
+            - MATURED
+            - PRESALE
+          in: query
+          name: subType
+          type: string
+        - description: status of the transaction being queried
+          in: query
+          name: transactionStatus
+          type: string
+        - description: partnerId filter
+          format: uuid
+          in: query
+          name: partnerId
+          type: string
+        - description: side filter
+          enum:
+            - buy
+            - sell
+          in: query
+          name: side
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Obtains ledger entries for downloading
+      tags:
+        - ledger
+  /admin/ledger/fees:
+    get:
+      consumes:
+        - application/json
+      description: GET Fee Subledger
+      parameters:
+        - description: starting transaction date
+          format: date
+          in: query
+          name: transactionDateFrom
+          type: string
+        - description: ending transaction date
+          format: date
+          in: query
+          name: transactionDateTo
+          type: string
+        - description: ledger Id
+          in: query
+          name: ledgerId
+          type: string
+        - description: account email
+          format: email
+          in: query
+          name: email
+          type: string
+        - description: partnerId filter
+          in: query
+          name: partnerId
+          type: string
+        - description: fee type
+          in: query
+          name: feeType
+          type: string
+        - description: page number
+          in: query
+          name: page
+          type: string
+        - description: page size limit
+          in: query
+          name: pageSize
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetFeeSubledgerPaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Obtains fee subledger entries
+      tags:
+        - ledger
+  /admin/ledger/reports:
+    get:
+      consumes:
+        - application/json
+      description: GET ledger report
+      parameters:
+        - description: starting transaction date
+          format: date
+          in: query
+          name: transactionDateFrom
+          type: string
+        - description: ending transaction date
+          format: date
+          in: query
+          name: transactionDateTo
+          type: string
+        - description: account email
+          format: email
+          in: query
+          name: userAccount
+          type: string
+        - description: partnerId filter
+          format: uuid
+          in: query
+          name: partnerId
+          type: string
+        - description: bond filter
+          in: query
+          name: bondId
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetLedgerReportsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Obtains report data from ledger
+      tags:
+        - ledger
+  /admin/ledger/transactions:
+    get:
+      consumes:
+        - application/json
+      description: GET transaction Subledger
+      parameters:
+        - description: starting transaction date
+          format: date
+          in: query
+          name: transactionDateFrom
+          type: string
+        - description: ending transaction date
+          format: date
+          in: query
+          name: transactionDateTo
+          type: string
+        - description: ledger Id
+          in: query
+          name: ledgerId
+          type: string
+        - description: account email
+          format: email
+          in: query
+          name: email
+          type: string
+        - description: partner Id filter
+          in: query
+          name: partnerId
+          type: string
+        - description: imm transaction id
+          in: query
+          name: immTransactionId
+          type: string
+        - description: page number
+          in: query
+          name: page
+          type: string
+        - description: page size limit
+          in: query
+          name: pageSize
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetTransactionSubledgerPaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Obtains transaction subledger entries
+      tags:
+        - ledger
+  /admin/ledger/view:
+    get:
+      description: GET Ledger from View
+      parameters:
+        - description: starting transaction date
+          format: date
+          in: query
+          name: transactionDateFrom
+          type: string
+        - description: ending transaction date
+          format: date
+          in: query
+          name: transactionDateTo
+          type: string
+        - description: ledger Id
+          in: query
+          name: ledgerId
+          type: string
+        - description: account email
+          format: email
+          in: query
+          name: email
+          type: string
+        - description: partner Id filter
+          in: query
+          name: partnerId
+          type: string
+        - description: imm transaction id
+          in: query
+          name: immTransactionId
+          type: string
+        - description: page number
+          in: query
+          name: page
+          type: string
+        - description: page size limit
+          in: query
+          name: pageSize
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetLedgerViewResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Obtains ledger entries from table view
+      tags:
+        - ledger
+  /admin/nross:
+    get:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetNRoSSAccountCreationFilesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: get nross files
+      tags:
+        - admin
+  /admin/nross/file:
+    post:
+      consumes:
+        - application/json
+      parameters:
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.GetPresignedNRoSSAccountCreationFileURLRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetPresignedNRoSSAccountCreationFileURLResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: get nross file presigned url
+      tags:
+        - admin
+  /admin/nross/generate:
+    get:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetStartNRoSSCreationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: create nross file
+      tags:
+        - admin
+  /admin/nross/upload:
+    post:
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PostUploadNRoSSActivationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: upload nross account document
+      tags:
+        - admin
+  /admin/settings:
+    get:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ServiceSettings'
+      summary: get service settings
+      tags:
+        - admin
+    put:
+      consumes:
+        - application/json
+      parameters:
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.UpdateSettingsRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UpdateServiceSettingsResponse'
+      summary: update service settings
+      tags:
+        - admin
+  /partners/{partnerId}/clients/{clientId}/balances:
+    get:
+      description: Get user balance
+      parameters:
+        - description: clientId
+          in: path
+          name: clientId
+          required: true
+          type: string
+        - description: partnerId
+          in: path
+          name: partnerId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetUserBalancesHttpResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get user balances
+      tags:
+        - balances
+    put:
+      description: Update user balance
+      parameters:
+        - description: clientId
+          in: path
+          name: clientId
+          required: true
+          type: string
+        - description: partnerId
+          in: path
+          name: partnerId
+          required: true
+          type: string
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.UpdateUserBalanceHttpRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UpdateUserBalanceHttpResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Update user balances [DEV ONLY/STAGE FOR TESTING ONLY. REMOVE ON PROD.]
+      tags:
+        - balances
+  /partners/{partnerid}/clients:
+    post:
+      consumes:
+        - application/json
+      description: post new account
+      parameters:
+        - description: Partner ID
+          in: path
+          name: partnerid
+          required: true
+          type: string
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.PostAccountRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PostAccountResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: creates a new account in baas
+      tags:
+        - accounts
+  /partners/{partnerid}/clients/{clientid}:
+    get:
+      consumes:
+        - application/json
+      description: obtains an account from the partnerid and clientid
+      parameters:
+        - description: Partner ID
+          in: path
+          name: partnerid
+          required: true
+          type: string
+        - description: Client ID
+          in: path
+          name: clientid
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Account'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: gets an account
+      tags:
+        - accounts
+    post:
+      consumes:
+        - application/json
+      description: creates a baas account with existing caas user
+      parameters:
+        - description: Partner ID
+          in: path
+          name: partnerid
+          required: true
+          type: string
+        - description: Client ID
+          in: path
+          name: clientid
+          required: true
+          type: string
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.PostExistingAccountRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PostExistingAccountResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: creates a baas account with existing caas user
+      tags:
+        - accounts
+  /partners/{partnerid}/clients/agreements:
+    post:
+      consumes:
+        - application/json
+      description: post legal agreements
+      parameters:
+        - description: Partner ID
+          in: path
+          name: partnerid
+          required: true
+          type: string
+        - description: Request Body
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/models.PostLegalAgreementsRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PostLegalAgreementsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: stores the legal agreements during user onboarding
+      tags:
+        - accounts
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"
